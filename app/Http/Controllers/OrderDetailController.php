@@ -11,6 +11,7 @@ use App\Models\{
     OrderDetail,
 };
 use DB;
+use Mail;
 
 class OrderDetailController extends Controller
 {
@@ -85,6 +86,18 @@ class OrderDetailController extends Controller
             'filename' => $filename,
             'fileurl' => $fileurl,
         ]);
+
+        $data = array(
+            'rec_no' => $request->rec_no,
+            'address' => $request->address,
+            'tel_no' => $request->tel_no,
+            'email' => $request->email,
+            'date'=> date("Y-m-d"),
+        );
+
+        Mail::send('email.email-layout', $data, function($message) use($request){
+            $message->to($request->email)->subject('Welcome');
+        });
 
         return redirect()->route('order.create')->with('status', 'Order added Successfully');
 
