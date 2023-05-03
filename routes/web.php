@@ -52,6 +52,8 @@ Route::middleware('auth')
         Route::get('/edit-order/{id}', 'edit')->name('order.edit');
         Route::patch('/edit-order/{id}/update',  'update')->name('order.update');
         Route::delete('/delete-order/{id}/delete',  'delete')->middleware('adminonly')->name('order.delete');
+        Route::get('/download-order/{id}/download', 'download')->name('order.download');
+
 
 });
 

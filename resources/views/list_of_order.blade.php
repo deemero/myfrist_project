@@ -38,7 +38,7 @@
                                     <td><b> RECEIPT NO </b></td>
                                     <td><b> ADDRESS </b></td>
                                     <td><b> TEL. NO </b></td>
-                                    <td><b> BUYER NAME </b></td>
+                                    <td><b> ATTACHMENT </b></td>
                                     <td><b> ACTION </b></td>
                                 </tr>
                             </thead>
@@ -52,7 +52,15 @@
                                     <td>{{ $list->rec_no }}</td>
                                     <td>{{ $list->address }}</td>
                                     <td>{{ $list->tel_no }}</td>
-                                    <td>{{ $list->user->name }}</td>
+                                    {{-- <td>{{ $list->user->name }}</td> --}}
+                                    <td>
+                                        @if ($list->filename == null)
+                                            TIADA FILE KAU JO
+                                        @else
+                                        <a href="{{route ('order.download', ['id' => $list->id])}}">{{ $list->filename}} </a>
+                                        @endif
+
+                                    </td>
                                     <td>
 
                                     <a href="{{route ('order.edit', ['id' => $list->id])}}" class="btn btn-warning">EDIT</a>

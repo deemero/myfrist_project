@@ -54,8 +54,20 @@ class OrderDetailController extends Controller
     public function store(OrderStoreRequest $request){
 
 
+
+        if($request->file('attachment') != null)
+        {
+
+
         $filename = $request->file('attachment')->getClientOriginalName();
         $fileurl = $request->file('attachment')->store('public/'.auth()->user()->id);
+
+        }
+        else
+        {
+            $filename = null;
+            $fileurl = null;
+        }
         // $this->validate($request, [
         //     'rec_no' => 'required|max:7',
         //     'address' => 'required|max:255',
@@ -119,6 +131,19 @@ class OrderDetailController extends Controller
 
     }
 
+    public function download($id)
+    {
+        $file_detail = OrderDetail::findorFail($id);
+        $filepath = storage_path('app/'.$file_detail->fileurl);
+        // $filename = $file_detail->file_name;
+        // return response()->download($filepath, $filename);
+
+        $headers = ['Content-Type: application/pdf'];
+
+        // return response()->download($filepath, $filename);
+        return response()->file($filepath, $headers);
+
+    }
 
 
 }
