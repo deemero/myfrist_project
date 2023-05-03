@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\{
+    OrderStoreRequest,
+};
+
 use App\Models\{
     OrderDetail,
 };
@@ -47,7 +51,7 @@ class OrderDetailController extends Controller
 
     }
 
-    public function store(Request $request){
+    public function store(OrderStoreRequest $request){
         $this->validate($request, [
             'rec_no' => 'required|max:7',
             'address' => 'required|max:255',

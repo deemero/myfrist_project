@@ -14,9 +14,9 @@ use App\Http\Controllers\OrderDetailController;
 //     OrderDetailController,
 // };
 
-DB::listen(function ($event){
-    dump($event->sql);
-});
+// DB::listen(function ($event){
+//     dump($event->sql);
+// });
 
 
 Route::controller(LoginController::class)
