@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{route ('order.create')}}" method="post">
+                    <form action="{{route ('order.create')}}" method="post" enctype="multipart/form-data">
                         <div class="card-body">
 
 
@@ -75,6 +75,9 @@
                                 </span>
                             @enderror
                         </div>
+                    <div>
+                    <input type="file" name='attachment'>
+                    </div>
                         <button type="submit" class="btn btn-primary mt-3">Submit</button>
                     </form>
                 </div>

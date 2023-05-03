@@ -26,6 +26,8 @@ class OrderDetail extends Model
         'tel_no',
         'email',
         'date',
+        'filename',
+        'fileurl',
 
     ];
 

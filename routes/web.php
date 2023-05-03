@@ -41,12 +41,21 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::controller(OrderDetailController::class)
+
+Route::middleware('auth')
+->group(function(){
+    Route::controller(OrderDetailController::class)
     ->group(function(){
-        Route::get('/order-details','index')->name('order.index');
+         Route::get('/order-details','index')->name('order.index');
         Route::get('/new-order', 'create')->name('order.create');
         Route::post('/new-order' ,'store');
         Route::get('/edit-order/{id}', 'edit')->name('order.edit');
         Route::patch('/edit-order/{id}/update',  'update')->name('order.update');
-        Route::delete('/delete-order/{id}/delete',  'delete')->name('order.delete');
-    });
+        Route::delete('/delete-order/{id}/delete',  'delete')->middleware('adminonly')->name('order.delete');
+
+});
+
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+});
