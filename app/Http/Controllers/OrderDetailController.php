@@ -52,6 +52,10 @@ class OrderDetailController extends Controller
     }
 
     public function store(OrderStoreRequest $request){
+
+
+        $filename = $request->file('attachment')->getClientOriginalName();
+        $fileurl = $request->file('attachment')->store('public/'.auth()->user()->id);
         // $this->validate($request, [
         //     'rec_no' => 'required|max:7',
         //     'address' => 'required|max:255',
@@ -66,6 +70,8 @@ class OrderDetailController extends Controller
             'tel_no' => $request->tel_no,
             'email' => $request->email,
             'date' => now(),
+            'filename' => $filename,
+            'fileurl' => $fileurl,
         ]);
 
         return redirect()->route('order.create')->with('status', 'Order added Successfully');

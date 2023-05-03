@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('order_details', function (Blueprint $table) {
-            $table->string('filename');
-            $table->string('fileurl');
+            $table->string('filename')->nullable;
+            $table->string('fileurl')->nullable;
         });
     }
 
