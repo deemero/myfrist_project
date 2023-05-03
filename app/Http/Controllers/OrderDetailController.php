@@ -52,12 +52,12 @@ class OrderDetailController extends Controller
     }
 
     public function store(OrderStoreRequest $request){
-        $this->validate($request, [
-            'rec_no' => 'required|max:7',
-            'address' => 'required|max:255',
-            'tel_no' => 'nullable|numeric',
-            'email' => 'nullable'
-        ]);
+        // $this->validate($request, [
+        //     'rec_no' => 'required|max:7',
+        //     'address' => 'required|max:255',
+        //     'tel_no' => 'nullable|numeric',
+        //     'email' => 'nullable'
+        // ]);
 
         OrderDetail::create([
             'rec_no' => $request->rec_no,
@@ -84,14 +84,14 @@ class OrderDetailController extends Controller
         ));
     }
 
-    public function update(Request $request, $id)
+    public function update(OrderStoreRequest $request, $id)
     {
-        $this->validate($request, [
-            'rec_no' => 'required|max:7',
-            'address' => 'required|max:255',
-            'tel_no' => 'nullable|numeric',
-            'email' => 'nullable'
-        ]);
+        // $this->validate($request, [
+        //     'rec_no' => 'required|max:7',
+        //     'address' => 'required|max:255',
+        //     'tel_no' => 'nullable|numeric',
+        //     'email' => 'nullable'
+        // ]);
 
         $order_detail=OrderDetail::findOrFail($id);
         $order_detail->rec_no = $request->rec_no;

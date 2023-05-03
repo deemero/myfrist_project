@@ -19,7 +19,7 @@
             @endforeach
         </ul>
     </div>
-@endif
+    @endif
                 <div class="card-header">
                     Create Order
                 </div>
@@ -34,18 +34,46 @@
                         <div class="form-group">
                             <label> Receipt Number </label>
                             <input type="text" name="rec_no" value="{{ $new_rec_no }}" class="form-control">
+                            @error('rec_no') is-invalid
+                            @enderror
+                            @error('rec_no')
+                                <span class="invalid-feedback d-block" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label> Address </label>
                             <textarea name="address"  class="form-control" rows="3"></textarea>
+                            @error('address') is-invalid
+                            @enderror
+                            @error('address')
+                                <span class="invalid-feedback d-block" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label> Tel. Number </label>
                             <input type="text" name="tel_no" class="form-control">
+                            @error('tel_no') is-invalid
+                            @enderror
+                            @error('tel_no')
+                                <span class="invalid-feedback d-block" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label> Email </label>
                             <input type="text" name="email" class="form-control">
+                            @error('email') is-invalid
+                            @enderror
+                            @error('email')
+                                <span class="invalid-feedback d-block" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <button type="submit" class="btn btn-primary mt-3">Submit</button>
                     </form>
