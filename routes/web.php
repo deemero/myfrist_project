@@ -43,6 +43,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::middleware('auth')
+    ->middleware("Prevent-Back-History")
 ->group(function(){
     Route::controller(OrderDetailController::class)
     ->group(function(){
